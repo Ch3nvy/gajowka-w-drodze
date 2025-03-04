@@ -1,26 +1,18 @@
-import { DeleteOutline } from "@mui/icons-material";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import ButtonComponent from "./components/button/Button";
+import Layout from "./components/layout/Layout";
+import Welcome from "./pages/welcome/Welcome";
+import Home from "./pages/home/Home";
+
 
 function App() {
-  const showAlert = (message: string) => {
-    alert(message);
-  };
-
   return (
-    <>
-      <div>
-        <p className="text-blue-300">Siema</p>
-        <ButtonComponent
-          sx={{ bgcolor: "red" }}
-          variant="contained"
-          onClick={() => showAlert("uwaga")}
-          endIcon={<DeleteOutline />}
-        >
-          Przycisk!@
-        </ButtonComponent>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Welcome/>} />
+        <Route path="/home" element={<Home/>} />
+      </Route>
+    </Routes>
   );
 }
 
